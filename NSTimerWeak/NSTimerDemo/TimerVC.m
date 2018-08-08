@@ -19,7 +19,7 @@
 - (NSTimer * _Nonnull)addTimer {
     
     
-    return [NSTimer weakScheduledTimerWithTimeInterval:1 target:self selector:@selector(testOne) userInfo:nil repeats:YES];
+    return [NSTimer weakScheduledTimerWithTimeInterval:1 target:self selector:@selector(testOne:) userInfo:@"user infor" repeats:YES];
 }
 
 - (void)viewDidLoad {
@@ -36,8 +36,8 @@
  
 }
 
-- (void)testOne {
-    NSLog(@"HEllo world");
+- (void)testOne:(NSTimer* )timer {
+    NSLog(@"HEllo world %@",timer.userInfo);
 }
 
 - (void)dealloc {

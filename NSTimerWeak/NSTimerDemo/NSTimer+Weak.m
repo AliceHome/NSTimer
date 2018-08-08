@@ -18,8 +18,8 @@
     
     if (_delegate) {
         IMP imp = [_delegate methodForSelector:_selector];
-        void (*func)(id, SEL) = (void*)imp;
-        func(_delegate,_selector);
+        void (*func)(id, SEL,NSTimer *) = (void*)imp;
+        func(_delegate,_selector,_timer);
     }else {
         [_timer invalidate];
         _timer = nil;
