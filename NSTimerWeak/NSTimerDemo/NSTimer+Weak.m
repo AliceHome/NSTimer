@@ -17,7 +17,9 @@
 - (void)targetSelector {
     
     if (_delegate) {
-        [self.delegate performSelector:_selector withObject:nil];
+        IMP imp = [_delegate methodForSelector:_selector];
+        void (*func)(id, SEL) = (void*)imp;
+        func(_delegate,_selector);
     }else {
         [_timer invalidate];
         _timer = nil;
